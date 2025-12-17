@@ -4,9 +4,9 @@ import { useAuthContext } from '../context/AuthContext';
 
 
 function ProtectedRoute() {
-    let { token } = useAuthContext();
+    let { auth, token } = useAuthContext();
 
-    if (!token) {
+    if (!auth && !token) {
         return <Navigate to="/login" replace />;
     }
 
