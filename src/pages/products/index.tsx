@@ -258,8 +258,6 @@ export default function index() {
         setShowDelete(false)
     }
 
-    console.log(selectedId, showDelete)
-
 	return (
 		<React.Fragment>
             {(selectedId && showDelete) && (
