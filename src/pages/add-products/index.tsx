@@ -362,7 +362,7 @@ export default function index() {
                             Cancel
                         </button>
                         <button type="button" onClick={handleSubmit} className={`btn--primary ${loading ? "disabled" : ""}`} disabled={loading}>
-                            {loading ? <Loader color="#fff" /> : id ? "Edit Product" : "Add Product"}
+                            {loading ? <Loader color="#fff" /> : id ? "Save Changes" : "Add Product"}
                         </button>
                     </div>
                 </div>
