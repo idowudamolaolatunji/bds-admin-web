@@ -72,6 +72,7 @@ export default function index() {
 		try {
 			const params = new URLSearchParams({
                 page: `${searchQuery ? 1 : paginationDetails?.currentPage}`,
+                limit: `${searchQuery ? 10 : paginationDetails?.perPage}`,
                 ...(searchQuery && { search: searchQuery }),
             });
 
@@ -87,56 +88,8 @@ export default function index() {
             }
 
             setProducts(data?.data?.products)
-            setPaginationDetails({ ...paginationDetails, totalCount: data?.pagination?.totalItems })
+            setPaginationDetails({ ...paginationDetails, totalCount: data?.data?.pagination?.totalItems })
 
-			// const mockData = [
-			// 	{
-			// 		id: 1,
-			// 		name: "Adebesi Oluchi",
-			// 		email: "adebisi123@gmail.com",
-			// 		phone: "+234 9045436576",
-			// 		status: "Enrolled",
-			// 		course: "Fullstack dev",
-			// 		date: "Jan 4, 2024",
-			// 	},
-			// 	{
-			// 		id: 2,
-			// 		name: "Ama Amos",
-			// 		email: "ama123@gmail.com",
-			// 		phone: "+234 9045436576",
-			// 		status: "Enrolled",
-			// 		course: "Fullstack dev",
-			// 		date: "Jan 4, 2024",
-			// 	},
-			// 	{
-			// 		id: 3,
-			// 		name: "Candi Oland",
-			// 		email: "candi123@gmail.com",
-			// 		phone: "+234 9045436576",
-			// 		status: "Enrolled",
-			// 		course: "Fullstack dev",
-			// 		date: "Jan 4, 2024",
-			// 	},
-			// 	{
-			// 		id: 4,
-			// 		name: "Osando Juma",
-			// 		email: "osand123@gmail.com",
-			// 		phone: "+234 9045436576",
-			// 		status: "Enrolled",
-			// 		course: "Fullstack dev",
-			// 		date: "Jan 4, 2024",
-			// 	},
-			// 	{
-			// 		id: 5,
-			// 		name: "Mari Lari",
-			// 		email: "mari123@gmail.com",
-			// 		phone: "+234 9045436576",
-			// 		status: "Enrolled",
-			// 		course: "Fullstack dev",
-			// 		date: "Jan 4, 2024",
-			// 	},
-			// ];
-			// setTableData(mockData as []);
 		} catch (error) {
 			console.error("Error fetching table data:", error);
 		} finally {
@@ -332,6 +285,7 @@ export default function index() {
                     columns={columns as any}
                     data={products as []}
                     pagination
+					paginationServer
                     paginationRowsPerPageOptions={[10, 20, 30]}
                     progressPending={tableLoading}
                     highlightOnHover

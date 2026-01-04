@@ -9,7 +9,6 @@ export default function DashboardHeader() {
 
     const title = pathname == "/dashboard" ? "Your dashboard" : pathname?.split("/")?.[2]?.replace("-", " ")
 
-    console.log(pathname)
 	return (
 		<header className="header">
             <div className="header--logo">
